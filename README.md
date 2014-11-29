@@ -1,4 +1,4 @@
-ExpressCF
+CloudFlare Express
 =========
 
 Express middleware for restoring visitors IP after being proxied through cloudflare.
