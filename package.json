@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Mewte/cloudflare-express",
   "dependencies": {
+    "needle": "^0.10.0",
     "range_check": "0.0.4"
   }
 }
