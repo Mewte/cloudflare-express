@@ -20,7 +20,10 @@ needle.get('https://www.cloudflare.com/ips-v6', function(error, response) {
 });
 
 function cloudflareExpress() {
-	this.restore = function(options = {}){
+	this.restore = function(options){
+		if (typeof options === 'undefined') {
+    	options = {};
+  	}
 		return function(req,res,next){
 			if (cf_ips.ip4.length === 0 || cf_ips.ip6.length === 0) {
 				if (options.error) {
