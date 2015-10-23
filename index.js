@@ -42,6 +42,7 @@ function cloudflareExpress() {
 			var remoteIP = {
 				ip: req.ip, // app.set trust proxy could potentially modify this and cause issues
 				protocol: req.protocol,
+				secure: req.secure,
 				v: "ip" + range_check.ver(req.ip)
 			};
 			if (req.headers['cf-connecting-ip'] == undefined){
@@ -50,8 +51,10 @@ function cloudflareExpress() {
 			if (range_check.in_range(remoteIP.ip, cf_ips[remoteIP.v])){
 				req.cf_ip = remoteIP.ip;
 				req.cf_protocol = remoteIP.protocol;
+				req.cf_secure = remoteIP.secure;
 				req.ip = req.headers['cf-connecting-ip'];
 				req.protocol = JSON.parse(req.headers["cf-visitor"])["scheme"];
+				req.secure = Boolean(req.protocol === 'https');
 			}
 			next();
 		};

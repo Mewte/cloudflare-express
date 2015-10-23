@@ -24,14 +24,16 @@ Then you just need to use this as a middleware, (preferably before any other mid
   app.use(cloudflare.restore());
 ```
 
-You can access the users original ip address by using the default ip property. The CloudFlare IP and CloudFlare scheme protocol used are set to the cf_ip and cf_protocol properties.
+You can access the users original ip address and the connection protocol by using the default ip and protocol properties. The CloudFlare IP and CloudFlare scheme protocol used are set to the cf_ip and cf_protocol properties.
 
 ```javascript
 router.get('/test', function(req,res,next){
   res.send("Origin IP: " + req.ip);
   res.send("Origin Protocol: " + req.protocol);
+  res.send("Origin <-> CloudFlare Security: " + req.secure);
   res.send("CloudFlare IP: " + req.cf_ip);
   res.send("CloudFlare Protocol: " + req.cf_protocol);
+  res.send("Web App <-> CloudFlare Security: " + req.cf_secure);
 });
 ```
 
