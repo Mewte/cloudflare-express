@@ -5,18 +5,18 @@ var cf_ips = {
 	ip6: []
 };
 
-needle.get('https://www.cloudflare.com/ips-v4', function(error, response) {
+needle.get('https://www.cloudflare.com/ips-v4', function(error, response, body) {
 	if (error) {
 		throw "Unable to access CloudFlare!";
 	}
-	cf_ips.ip4 = response.body.split("\n");
+	cf_ips.ip4 = String(body).split("\n");
 });
 
-needle.get('https://www.cloudflare.com/ips-v6', function(error, response) {
+needle.get('https://www.cloudflare.com/ips-v6', function(error, response, body) {
 	if (error) {
 		throw "Unable to access CloudFlare!";
 	}
-	cf_ips.ip6 = response.body.split("\n");
+	cf_ips.ip6 = String(body).split("\n");
 });
 
 function cloudflareExpress() {
