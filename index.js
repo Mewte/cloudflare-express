@@ -48,7 +48,10 @@ function cloudflareExpress() {
 			if (req.headers['cf-connecting-ip'] == undefined){
 				return next(); //no cloudflare IP, continue on like this never happened. Shhhh!
 			}
+			console.log(remoteIP.ip, cf_ips[remoteIP.v])
 			if (range_check.in_range(remoteIP.ip, cf_ips[remoteIP.v])){
+				console.log(remoteIP);
+				console.log(req.headers)
 				req.cf_ip = remoteIP.ip;
 				req.cf_protocol = remoteIP.protocol;
 				req.cf_secure = remoteIP.secure;
