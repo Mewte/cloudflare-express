@@ -76,6 +76,16 @@ describe("Actual Middleware Tests",function(){
 			});
 		});
 	});
+	describe('cf-connecting-ip header set, connecting ip4 (mapped as IPv6) owned by Cloudflare',function(){
+		it("cf_ip should be equal to cf-connecting-ip header which is 255.255.255.255", function(){
+			var req = {ip:"::ffff:173.245.48.0"};
+			req.headers = {'cf-connecting-ip':"255.255.255.255"};
+			app(req,{},function(err){
+				assert.notEqual(req.ip,req.cf_ip,"Make sure req.ip test IP is actually a cloudflare IP");
+				assert.equal(req.cf_ip, "255.255.255.255");
+			});
+		});
+	});
 	describe('cf-connecting-ip header set, connecting ip6 owned by Cloudflare',function(){
 		it("cf_ip should be equal to cf-connecting-ip header which is 255.255.255.255", function(){
 			var req = {ip:"2405:8100:0:0:0:0:0:0"};
