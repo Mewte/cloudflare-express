@@ -17,7 +17,6 @@ function cloudflareExpress(){
 				ip: range_check.storeIP(req.ip), //app.set trust proxy could potentially modify this and cause issues
 				v: "ip"+range_check.ver(range_check.storeIP(req.ip))
 			};
-      console.log(remoteIP);
 			req.cf_ip = remoteIP.ip;//override this if cloudflare present
 			if (req.headers['cf-connecting-ip'] == undefined){
 				return next(); //no cloudflare IP, continue on like this never happened. Shhhh!
