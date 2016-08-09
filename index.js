@@ -14,8 +14,8 @@ function cloudflareExpress(){
 		}
 		return function(req,res,next){
 			var remoteIP = {
-				ip: req.ip, //app.set trust proxy could potentially modify this and cause issues
-				v: "ip"+range_check.ver(req.ip)
+				ip: range_check.storeIP(req.ip), //app.set trust proxy could potentially modify this and cause issues
+				v: "ip"+range_check.ver(range_check.storeIP(req.ip))
 			};
       console.log(remoteIP);
 			req.cf_ip = remoteIP.ip;//override this if cloudflare present
@@ -28,9 +28,6 @@ function cloudflareExpress(){
 			next();
 		};
 	};
-	this.check = function(connecting_ip,real_ip){
-
-	}
 }
 module.exports = new cloudflareExpress();
 
