@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Mewte/cloudflare-express",
   "dependencies": {
-    "range_check": "0.0.4",
+    "range_check": "^1.4.0",
     "request": "^2.72.0"
   },
   "devDependencies": {
