@@ -13,9 +13,8 @@ function cloudflareExpress(){
 			});
 		}
 		return function(req,res,next){
-            var ip = req.ip.replace("::ffff:",""); //remove ipv4 to ipv6 prefix
 			var remoteIP = {
-				ip: ip, //app.set trust proxy could potentially modify this and cause issues
+				ip: req.ip.replace("::ffff:",""), //app.set trust proxy could potentially modify this and cause issues
 				v: "ip"+range_check.ver(ip)
 			};
 			req.cf_ip = remoteIP.ip;//override this if cloudflare present
