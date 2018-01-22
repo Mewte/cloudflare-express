@@ -1,10 +1,10 @@
 {
   "name": "cloudflare-express",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Restores visitors IP after being proxied by cloudflare",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Mewte/cloudflare-express",
   "dependencies": {
-    "range_check": "0.0.4",
+    "range_check": "1.4.0",
     "request": "^2.72.0"
   },
   "devDependencies": {
