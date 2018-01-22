@@ -1,4 +1,4 @@
-var cf_exp = require("./index.js");
+var cf_exp = require("../index.js");
 var assert = require('chai').assert;
 var fs = require('fs');
 describe('CloudflareExpress - update_on_start: FALSE', function() {
