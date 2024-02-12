@@ -30,7 +30,7 @@ function cloudflareExpress(){
 }
 module.exports = new cloudflareExpress();
 
-var request = require('request');
+var request = require('@sailshq/request');
 function getIPs(callback){
 	var list = {};
 	var cf_callback = function(version) {
@@ -47,6 +47,6 @@ function getIPs(callback){
 		ip4:"https://www.cloudflare.com/ips-v4",
 		ip6:"https://www.cloudflare.com/ips-v6"
 	}
-	request(urls.ip4, cf_callback("ip4"));
-	request(urls.ip6, cf_callback("ip6"));
+	request(urls.ip4, {}, cf_callback("ip4"));
+	request(urls.ip6, {}, cf_callback("ip6"));
 }
