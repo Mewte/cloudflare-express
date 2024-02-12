@@ -24,12 +24,12 @@
   },
   "homepage": "https://github.com/Mewte/cloudflare-express",
   "dependencies": {
-   "range_check": "1.4.0",
-    "request": "^2.72.0"
+    "@sailshq/request": "^2.88.3",
+    "range_check": "1.4.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mocha": "^2.4.5"
   }
 }
